@@ -10,13 +10,17 @@
     "type": "git",
     "url": "https://github.com/timothyleslieallen/amqplib-rpc-client"
   },
-  "keywords": ["amqp amqplib rabbitmq rpc"],
+  "keywords": [
+    "amqp amqplib rabbitmq rpc"
+  ],
   "author": "Tim Allen <tim@noblesamurai.com>",
   "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/timothyleslieallen/amqplib-rpc-client/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "amqplib": "^0.4.1"
+  },
   "devDependencies": {
     "expect.js": "^0.3.1",
     "mocha": "^2.3.4"

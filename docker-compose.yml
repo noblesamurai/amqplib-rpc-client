@@ -1,0 +1,11 @@
+main:
+  build: .
+  links:
+    - rabbit
+  environment:
+    - AMQP_URL=amqp://rabbit
+  volumes: 
+    - .:/usr/src/app/
+
+rabbit:
+  image: rabbitmq

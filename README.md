@@ -16,4 +16,9 @@ $ npm install amqplib-rpc-client
 
 ``` js
 var amqplibRpcClient = require('amqplib-rpc-client');
+
+amqplibRpcClient(amqpUrl, exchange, 'add', { number1: 1, number2: 4 }).on('data', function(response) {
+  expect(response.answer).to.be(5);
+  done();
+});
 ```
