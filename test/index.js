@@ -27,7 +27,9 @@ describe('amqplib-rpc-client', function () {
 
   after(function () {
     console.log('closing...');
-    return conn.close().then(() => console.log('done!'));
+    // HACK(tim): Need a proper was to close the connection...!
+    return conn.close().then(() => process.exit());
+
   });
 
   it('should send and receive a response', function (done) {
