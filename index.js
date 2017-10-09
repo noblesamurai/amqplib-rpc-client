@@ -13,7 +13,7 @@ module.exports = function (amqpUrl, exchange, routingKey, message) {
         // for replyTo.
         ch.assertQueue().then(function (asserted) {
           ch.bindQueue(asserted.queue, exchange, asserted.queue); // Bind response queue so it gets response.
-          ch.publish(exchange, routingKey, new Buffer(JSON.stringify(message)), { replyTo: asserted.queue });
+          ch.publish(exchange, routingKey, Buffer.from(JSON.stringify(message)), { replyTo: asserted.queue });
           ch.consume(asserted.queue, onMessage);
         });
 

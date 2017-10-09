@@ -18,7 +18,7 @@ describe('amqplib-rpc-client', function () {
         function onMessage (message) {
           var payload = JSON.parse(message.content.toString());
           var response = { type: 'data', answer: payload.number1 + payload.number2 };
-          ch.publish(exchange, message.properties.replyTo, new Buffer(JSON.stringify(response)));
+          ch.publish(exchange, message.properties.replyTo, Buffer.from(JSON.stringify(response)));
           ch.ack(message);
         }
       });
@@ -26,10 +26,8 @@ describe('amqplib-rpc-client', function () {
   });
 
   after(function () {
-    console.log('closing...');
     // HACK(tim): Need a proper was to close the connection...!
     return conn.close().then(() => process.exit());
-
   });
 
   it('should send and receive a response', function (done) {
