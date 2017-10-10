@@ -14,13 +14,22 @@ $ npm install amqplib-rpc-client
 
 ## Example Usage
 
-``` js
-var amqplibRpcClient = require('amqplib-rpc-client'),
-    expect = require('expect.js');
-
-amqplibRpcClient(amqpUrl, exchange, 'add', { number1: 1, number2: 4 }).on('data', function(response) {
-  expect(response.answer).to.be(5);
+```js
+const client = require('amqp-service').client({ url , exchange });
+const opts = { progress: function () {} );
+const cb = function (data) { console.log(data); }
+const request = client.request('add', { number1: 1, number2: 4 }, opts, cb);
 });
+
+client.close();
+
+```js
+const server = require('amqp-service').server({ url , exchange });
+const cb = function (input) {
+  return Promise.resolve('result!');
+};
+const server.handler('add',  cb);
+server.close();
 ```
 
 ## Usage/conventions
