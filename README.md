@@ -22,6 +22,7 @@ const request = client.request('add', { number1: 1, number2: 4 }, opts, cb);
 });
 
 client.close();
+```
 
 ```js
 const server = require('amqp-service').server({ url , exchange });
